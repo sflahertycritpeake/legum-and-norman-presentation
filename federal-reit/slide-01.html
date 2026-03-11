@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 01 — Cover</title>
+  <link rel="stylesheet" href="cps-theme.css">
+  <style>
+    .slide-inner { padding-right: var(--slide-pad); }
+    .cover-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--sp-5);
+      border-top: var(--stroke-thin) solid rgba(255,255,255,0.12);
+    }
+    .content-guard {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        108deg,
+        rgba(19,20,25,1) 0%,
+        rgba(19,20,25,0.94) 44%,
+        rgba(19,20,25,0.60) 62%,
+        transparent 78%
+      );
+      z-index: 1;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+
+    <!-- Background Decorators -->
+    <div class="cps-tri-navy"></div>
+    <div class="cps-tri-red"></div>
+    <div class="content-guard"></div>
+    <div class="cps-bar-bottom"></div>
+
+    <!-- Slide Content -->
+    <div class="slide-inner">
+
+      <!-- Header row: both logos -->
+      <div class="flex-row" style="justify-content: space-between; align-items: flex-start; margin-bottom: var(--sp-4);">
+        <div class="logo-row anim-fade-right">
+          <img src="../Content/Logos/Critical-Peake-Logo_FA White.png" alt="Critical Peake logo" style="height: 110px; width: auto;">
+          <span style="width:2px; height:80px; background:rgba(255,255,255,0.18);"></span>
+          <img src="../Content/Logos/BlueWhale_LogoCMYK_white.png" alt="Blue Whale EV logo" style="height: 110px; width: auto;">
+        </div>
+      </div>
+
+      <!-- Main headline -->
+      <div class="flex-col gap-3" style="flex: 1; justify-content: center; max-width: 2400px;">
+
+        <p class="t-eyebrow anim-fade-up delay-1">Presented by Critical Peake Services &amp; Blue Whale EV</p>
+
+        <h1 class="t-hero anim-fade-up delay-2" style="line-height: 0.96; font-size: 220px;">
+          FEDERAL REALITY<br>INVESTMENT TRUST
+        </h1>
+
+        <div class="divider-red anim-scale-in delay-3" style="margin: var(--sp-2) 0;"></div>
+
+        <p class="t-h2 anim-fade-up delay-4" style="font-size: 200px; letter-spacing: 0.06em;">
+          LUNCH &amp; LEARN
+        </p>
+
+      </div>
+
+      <!-- Cover footer -->
+      <div class="cover-footer anim-fade-up delay-5">
+        <div class="flex-col gap-1">
+          <p class="t-label t-muted">March 12, 2026</p>
+        </div>
+        <div class="flex-row gap-4">
+          <p class="t-label t-muted">criticalpeake.com</p>
+          <span style="width:2px; height:32px; background:rgba(255,255,255,0.15);"></span>
+          <p class="t-label t-muted">877-247-9767</p>
+          <span style="width:2px; height:32px; background:rgba(255,255,255,0.15);"></span>
+          <p class="t-label t-muted">bluewhaleev.com</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

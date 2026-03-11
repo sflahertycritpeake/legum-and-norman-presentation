@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 12 — Why Xeal</title>
+  <link rel="stylesheet" href="bwev-theme.css">
+  <style>
+    .xeal-cols { display: flex; gap: var(--sp-5); flex: 1; }
+    .xeal-left {
+      flex: 0 0 48%; display: flex; flex-direction: column;
+      justify-content: center; gap: 0;
+    }
+    .xeal-right {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; align-items: stretch; gap: var(--sp-2);
+    }
+    .video-wrapper {
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      border-radius: var(--radius-lg); overflow: hidden;
+      border: var(--stroke-thin) solid rgba(0,114,180,0.30);
+    }
+    .video-wrapper iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    .xeal-item {
+      display: flex; align-items: flex-start; gap: var(--sp-2);
+      padding: 28px 0;
+      border-bottom: var(--stroke-hair) solid rgba(141,198,63,0.12);
+    }
+    .xeal-item:last-child { border-bottom: none; }
+    .xeal-check {
+      width: 64px; height: 64px; flex-shrink: 0;
+      background: var(--bw-green); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; margin-top: 4px;
+    }
+    .xeal-check svg {
+      width: 38px; height: 38px; fill: none;
+      stroke: var(--bw-dark-blue); stroke-width: 5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .xeal-item .t-h4 {
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700; font-size: var(--fs-lg); line-height: var(--lh-snug);
+      color: var(--bw-white);
+    }
+    .xeal-item .t-body-sm {
+      font-family: 'Avenir Next', Avenir, sans-serif;
+      font-size: 36px; line-height: 1.4; color: var(--bw-gray-500);
+    }
+    .bottom-note {
+      font-family: 'Avenir Next', Avenir, sans-serif;
+      font-size: 36px; color: var(--bw-white); opacity: 0.7;
+      font-style: italic; text-align: center; max-width: 2800px;
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="bwev-glow-right anim-glow-pulse"></div>
+    <div class="bwev-glow-bottom"></div>
+    <div class="bwev-wave-bg anim-wave-drift">
+      <svg viewBox="0 0 3840 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,500 C580,400 1260,560 1940,420 C2620,280 3260,500 3840,380 L3840,900 L0,900 Z" fill="#0072B4" opacity="0.17"/>
+        <path d="M0,620 C620,500 1360,660 2040,520 C2720,380 3360,580 3840,480 L3840,900 L0,900 Z" fill="#0072B4" opacity="0.27"/>
+        <path d="M0,750 C460,690 1000,790 1600,730 C2200,670 2840,770 3840,710 L3840,900 L0,900 Z" fill="rgba(11,42,67,0.83)"/>
+      </svg>
+    </div>
+    <div class="bwev-accent-top"></div>
+    <div class="bwev-accent-bottom"></div>
+
+    <div class="slide-inner">
+      <div class="flex-row" style="justify-content:space-between; margin-bottom: var(--sp-2);">
+        <div class="flex-col gap-3">
+          <p class="t-eyebrow anim-fade-right">The Go-To Charger for Parking Garages</p>
+          <h2 class="t-h2 anim-fade-up delay-1">WHY XEAL</h2>
+          <div class="divider-green anim-scale-in delay-2"></div>
+        </div>
+        <div class="logo-lockup anim-fade-left">
+          <img src="../Content/Logos/BlueWhale_LogoCMYK_white.png" alt="Blue Whale EV logo" style="height: 120px; width: auto;">
+        </div>
+      </div>
+
+      <div class="xeal-cols">
+        <div class="xeal-left">
+          <div class="xeal-item anim-fade-right delay-2">
+            <div class="xeal-check">
+              <svg viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">No WiFi or Cellular Required</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Bluetooth/NFC connectivity — perfect for garages with poor signal.</p>
+            </div>
+          </div>
+          <div class="xeal-item anim-fade-right delay-3">
+            <div class="xeal-check">
+              <svg viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">No Network Fees</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">$0/mo software and network costs — no recurring subscriptions.</p>
+            </div>
+          </div>
+          <div class="xeal-item anim-fade-right delay-4">
+            <div class="xeal-check">
+              <svg viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">Payment Built In</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">NFC tap-to-pay — no app download needed for drivers.</p>
+            </div>
+          </div>
+          <div class="xeal-item anim-fade-right delay-5">
+            <div class="xeal-check">
+              <svg viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">Durable &amp; Low Maintenance</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Purpose-built for parking garages — fewer moving parts, fewer failures.</p>
+            </div>
+          </div>
+          <div class="xeal-item anim-fade-right delay-5">
+            <div class="xeal-check">
+              <svg viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">Revenue-Ready</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Set your own pricing and collect revenue from day one.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="xeal-right">
+          <div class="video-wrapper anim-fade-left delay-3">
+            <iframe src="https://www.youtube.com/embed/EmeirH2SBcU?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <p class="bottom-note anim-fade-up delay-5">
+        Ideal for multi-property portfolios — simple to deploy, simple to manage at scale.
+      </p>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 04 — We've Worked in Your World</title>
+  <link rel="stylesheet" href="cps-theme.css">
+  <style>
+    .proof-list {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; gap: 0;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      border-bottom: var(--stroke-hair) solid rgba(255,255,255,0.07);
+      padding-bottom: var(--sp-2);
+      padding-top: var(--sp-2);
+    }
+    .check-icon { margin-top: 0; }
+    .check-item .t-body-sm { font-size: 44px; line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="cps-tri-navy"></div>
+    <div class="cps-tri-red"></div>
+    <div class="cps-bar-bottom"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(108deg,rgba(19,20,25,1) 0%,rgba(19,20,25,0.95) 52%,rgba(19,20,25,0.55) 70%,transparent 82%);z-index:1;"></div>
+
+    <div class="slide-inner">
+      <div class="flex-row" style="justify-content:space-between; margin-bottom: var(--sp-2);">
+        <div class="flex-col gap-2">
+          <p class="t-eyebrow anim-fade-right">Commercial Property Experience</p>
+          <h2 class="t-h2 anim-fade-up delay-1">WE'VE WORKED IN YOUR WORLD</h2>
+          <div class="divider-red anim-scale-in delay-2"></div>
+        </div>
+        <div class="logo-lockup anim-fade-left">
+          <img src="../Content/Logos/Critical-Peake-Logo_FA White.png" alt="Critical Peake logo" style="height: 120px; width: auto;">
+        </div>
+      </div>
+
+      <div class="proof-list">
+          <div class="check-item anim-fade-right delay-2">
+            <div class="check-icon">
+              <svg class="check-svg" viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">CAPREIT</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Electrical services across multifamily residential communities</p>
+            </div>
+          </div>
+          <div class="check-item anim-fade-right delay-3">
+            <div class="check-icon">
+              <svg class="check-svg" viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">Greystar</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Electrical services across multifamily &amp; mixed-use communities</p>
+            </div>
+          </div>
+          <div class="check-item anim-fade-right delay-4">
+            <div class="check-icon">
+              <svg class="check-svg" viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">Bozzuto</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Trusted electrical partner across managed properties</p>
+            </div>
+          </div>
+          <div class="check-item anim-fade-right delay-5">
+            <div class="check-icon">
+              <svg class="check-svg" viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">WPM Real Estate Management</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Ongoing electrical maintenance &amp; capital projects</p>
+            </div>
+          </div>
+          <div class="check-item anim-fade-right delay-5">
+            <div class="check-icon">
+              <svg class="check-svg" viewBox="0 0 48 48"><polyline points="8,24 20,36 40,12"/></svg>
+            </div>
+            <div>
+              <p class="t-h4">Quadrangle Development</p>
+              <p class="t-body-sm" style="margin-top:var(--sp-1);">Full-service electrical for commercial &amp; residential portfolios</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

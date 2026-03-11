@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 09 — Don't Just Take Our Word For It</title>
+  <link rel="stylesheet" href="cps-theme.css">
+  <style>
+    .testimonial-stage {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; gap: var(--sp-4); position: relative;
+    }
+    .quote-marks-bg {
+      position: absolute; top: 0; left: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 600px; line-height: 0.6; color: var(--cp-red);
+      opacity: 0.12; user-select: none; z-index: 0; pointer-events: none;
+    }
+    .testimonial-card {
+      position: relative; z-index: 2; display: flex; gap: var(--sp-4);
+      padding: var(--sp-4) var(--sp-5); background: var(--cp-navy-alpha-12);
+      border-left: var(--stroke-bold) solid var(--cp-red);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    }
+    .testimonial-card .quote-body {
+      font-family: 'Roboto', sans-serif; font-size: 52px; line-height: 1.45;
+      color: var(--cp-gray-400); font-style: italic; flex: 1;
+    }
+    .testimonial-card .attribution {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      gap: 8px; min-width: 320px; text-align: right;
+    }
+    .attribution-name {
+      font-family: 'Roboto Condensed', sans-serif; font-weight: 700;
+      font-size: var(--fs-sm); color: var(--cp-white); text-transform: uppercase;
+    }
+    .attribution-title {
+      font-family: 'Roboto', sans-serif; font-size: var(--fs-xs); color: var(--cp-gray-500);
+    }
+    .stars { font-size: 48px; color: #F5A623; letter-spacing: 4px; line-height: 1; }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="cps-tri-navy"></div>
+    <div class="cps-tri-red"></div>
+    <div class="cps-bar-bottom"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(108deg,rgba(19,20,25,1) 0%,rgba(19,20,25,0.95) 52%,rgba(19,20,25,0.55) 70%,transparent 82%);z-index:1;"></div>
+
+    <div class="slide-inner">
+      <div class="flex-row" style="justify-content:space-between; margin-bottom: var(--sp-3);">
+        <div class="flex-col gap-2">
+          <p class="t-eyebrow anim-fade-right">Google Reviews</p>
+          <h2 class="t-h2 anim-fade-up delay-1">DON'T JUST TAKE<br>OUR WORD FOR IT</h2>
+          <div class="divider-red anim-scale-in delay-2"></div>
+        </div>
+        <div class="logo-lockup anim-fade-left">
+          <img src="../Content/Logos/Critical-Peake-Logo_FA White.png" alt="Critical Peake logo" style="height: 120px; width: auto;">
+        </div>
+      </div>
+
+      <div class="testimonial-stage">
+        <span class="quote-marks-bg" aria-hidden="true">&ldquo;</span>
+
+        <div class="testimonial-card anim-fade-up delay-2">
+          <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="quote-body">
+              &ldquo;I'm a general manager of several commercial properties with a REIT and Critical Peake is the go to vendor! They are so responsive and the follow-up is great! All the techs personally call with updates on projects!&rdquo;
+            </p>
+          </div>
+          <div class="attribution">
+            <div class="divider-red" style="width:60px; height:6px; align-self:flex-end;"></div>
+            <p class="attribution-name">Sherrie Little</p>
+            <p class="attribution-title">Commercial Property GM</p>
+          </div>
+        </div>
+
+        <div class="testimonial-card anim-fade-up delay-3">
+          <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="quote-body">
+              &ldquo;They provide excellent response times... no callback repair issues. Critical Peake completes service requests in a timely manner no matter if it is a capital project or small project.&rdquo;
+            </p>
+          </div>
+          <div class="attribution">
+            <div class="divider-red" style="width:60px; height:6px; align-self:flex-end;"></div>
+            <p class="attribution-name">Adam Cook</p>
+            <p class="attribution-title">Google Review</p>
+          </div>
+        </div>
+
+        <div class="testimonial-card anim-fade-up delay-4">
+          <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p class="quote-body">
+              &ldquo;Pablo came out at night for emergency call. Arrived on time. Assessed situation rapidly.&rdquo;
+            </p>
+          </div>
+          <div class="attribution">
+            <div class="divider-red" style="width:60px; height:6px; align-self:flex-end;"></div>
+            <p class="attribution-name">Steven Schonfeld</p>
+            <p class="attribution-title">Google Review</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

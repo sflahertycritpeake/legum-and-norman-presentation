@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Reality Investment Trust — Lunch &amp; Learn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100vw;height:100vh;background:#07080b;overflow:hidden;font-family:sans-serif}
+
+#deck{position:relative;width:100%;height:100%}
+
+.slide-frame{
+  position:absolute;inset:0;
+  border:none;width:100%;height:100%;
+  visibility:hidden;opacity:0;z-index:0;
+  will-change:transform,opacity;
+}
+.slide-frame.active{visibility:visible;opacity:1;z-index:2}
+
+.slide-frame.slide-out-left{
+  visibility:visible;
+  animation:deckOutLeft 600ms cubic-bezier(.4,0,.2,1) forwards;
+  z-index:1;
+}
+.slide-frame.slide-in-right{
+  visibility:visible;
+  animation:deckInRight 600ms cubic-bezier(.4,0,.2,1) forwards;
+  z-index:2;
+}
+.slide-frame.slide-out-right{
+  visibility:visible;
+  animation:deckOutRight 600ms cubic-bezier(.4,0,.2,1) forwards;
+  z-index:1;
+}
+.slide-frame.slide-in-left{
+  visibility:visible;
+  animation:deckInLeft 600ms cubic-bezier(.4,0,.2,1) forwards;
+  z-index:2;
+}
+
+@keyframes deckOutLeft{
+  from{opacity:1;transform:translateX(0)}
+  to{opacity:0;transform:translateX(-12%)}
+}
+@keyframes deckInRight{
+  from{opacity:0;transform:translateX(12%)}
+  to{opacity:1;transform:translateX(0)}
+}
+@keyframes deckOutRight{
+  from{opacity:1;transform:translateX(0)}
+  to{opacity:0;transform:translateX(12%)}
+}
+@keyframes deckInLeft{
+  from{opacity:0;transform:translateX(-12%)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+#slide-counter{
+  position:fixed;bottom:20px;right:28px;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  font-size:15px;font-weight:500;
+  color:rgba(255,255,255,.32);z-index:9999;pointer-events:none;
+  letter-spacing:.08em;transition:opacity .3s;
+}
+
+.nav-btn{
+  position:fixed;bottom:15px;
+  width:34px;height:34px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:6px;cursor:pointer;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s;padding:0;
+}
+.nav-btn:hover{
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.20);
+}
+.nav-btn svg{
+  width:18px;height:18px;stroke:rgba(255,255,255,.40);
+  stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;
+}
+#prev-btn{right:170px}
+#next-btn{right:130px}
+#fullscreen-btn{right:90px}
+</style>
+</head>
+<body>
+
+<div id="deck">
+  <iframe class="slide-frame active" src="slide-01.html" data-slide="1"></iframe>
+  <iframe class="slide-frame" src="slide-02.html" data-slide="2"></iframe>
+  <iframe class="slide-frame" src="slide-03.html" data-slide="3"></iframe>
+  <iframe class="slide-frame" src="slide-04.html" data-slide="4"></iframe>
+  <iframe class="slide-frame" src="slide-05.html" data-slide="5"></iframe>
+  <iframe class="slide-frame" src="slide-06.html" data-slide="6"></iframe>
+  <iframe class="slide-frame" src="slide-07.html" data-slide="7"></iframe>
+  <iframe class="slide-frame" src="slide-13.html" data-slide="8"></iframe>
+  <iframe class="slide-frame" src="slide-08.html" data-slide="9"></iframe>
+  <iframe class="slide-frame" src="slide-09.html" data-slide="10"></iframe>
+  <iframe class="slide-frame" src="slide-10.html" data-slide="11"></iframe>
+  <iframe class="slide-frame" src="slide-11.html" data-slide="12"></iframe>
+  <iframe class="slide-frame" src="slide-16.html" data-slide="13"></iframe>
+  <iframe class="slide-frame" src="slide-12.html" data-slide="14"></iframe>
+  <iframe class="slide-frame" src="slide-17.html" data-slide="15"></iframe>
+  <iframe class="slide-frame" src="slide-15.html" data-slide="16"></iframe>
+  <iframe class="slide-frame" src="slide-14.html" data-slide="17"></iframe>
+</div>
+
+<div id="slide-counter">1 / 17</div>
+
+<button id="prev-btn" class="nav-btn" title="Previous slide">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+<button id="next-btn" class="nav-btn" title="Next slide">
+  <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+</button>
+<button id="fullscreen-btn" class="nav-btn" title="Toggle fullscreen">
+  <svg viewBox="0 0 24 24">
+    <polyline points="15 3 21 3 21 9"/>
+    <polyline points="9 21 3 21 3 15"/>
+    <line x1="21" y1="3" x2="14" y2="10"/>
+    <line x1="3" y1="21" x2="10" y2="14"/>
+  </svg>
+</button>
+
+<script>
+(function () {
+  var frames = document.querySelectorAll('.slide-frame');
+  var counter = document.getElementById('slide-counter');
+  var fsBtn = document.getElementById('fullscreen-btn');
+  var prevBtn = document.getElementById('prev-btn');
+  var nextBtn = document.getElementById('next-btn');
+  var wakeLock = null;
+  var total = frames.length;
+  var current = 0;
+  var transitioning = false;
+  var DURATION = 600;
+
+  function sendPlay(frame) {
+    frame.contentWindow.postMessage('play', '*');
+  }
+  function sendFreeze(frame) {
+    frame.contentWindow.postMessage('freeze', '*');
+  }
+
+  function updateCounter() {
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function goTo(index, direction) {
+    if (transitioning || index < 0 || index >= total || index === current) return;
+    transitioning = true;
+
+    var outgoing = frames[current];
+    var incoming = frames[index];
+
+    frames.forEach(function (f) {
+      f.classList.remove('slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+    });
+
+    sendPlay(incoming);
+    outgoing.classList.remove('active');
+
+    if (direction === 'forward') {
+      outgoing.classList.add('slide-out-left');
+      incoming.classList.add('slide-in-right');
+    } else {
+      outgoing.classList.add('slide-out-right');
+      incoming.classList.add('slide-in-left');
+    }
+
+    setTimeout(function () {
+      sendFreeze(outgoing);
+      outgoing.classList.remove('slide-out-left', 'slide-out-right');
+      incoming.classList.remove('slide-in-left', 'slide-in-right');
+      incoming.classList.add('active');
+      current = index;
+      updateCounter();
+      transitioning = false;
+    }, DURATION);
+  }
+
+  // Auto-start: play slide 1 once its iframe has loaded
+  frames[0].addEventListener('load', function () {
+    sendPlay(frames[0]);
+  });
+  // In case iframe already loaded before this listener attached
+  if (frames[0].contentDocument && frames[0].contentDocument.readyState === 'complete') {
+    sendPlay(frames[0]);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      goTo(current + 1, 'forward');
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      goTo(current - 1, 'backward');
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0, 'backward');
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goTo(total - 1, 'forward');
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFullscreen();
+    }
+  });
+
+  document.getElementById('deck').addEventListener('click', function (e) {
+    if (e.target.closest('.nav-btn')) return;
+    goTo(current + 1, 'forward');
+  });
+
+  prevBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    goTo(current - 1, 'backward');
+  });
+  nextBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    goTo(current + 1, 'forward');
+  });
+
+  function toggleFullscreen() {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      var el = document.documentElement;
+      (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+    }
+  }
+
+  fsBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    toggleFullscreen();
+  });
+
+  async function requestWakeLock() {
+    try {
+      if ('wakeLock' in navigator) {
+        wakeLock = await navigator.wakeLock.request('screen');
+      }
+    } catch (e) { /* wake lock not available */ }
+  }
+  function releaseWakeLock() {
+    if (wakeLock) { wakeLock.release(); wakeLock = null; }
+  }
+
+  function onFsChange() {
+    var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    fsBtn.innerHTML = isFs
+      ? '<svg viewBox="0 0 24 24"><polyline points="4 14 4 20 10 20"/><polyline points="20 10 20 4 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>'
+      : '<svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+    if (isFs) { requestWakeLock(); } else { releaseWakeLock(); }
+  }
+  document.addEventListener('fullscreenchange', onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+  // Re-acquire wake lock if page becomes visible again while fullscreen
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && (document.fullscreenElement || document.webkitFullscreenElement)) {
+      requestWakeLock();
+    }
+  });
+
+  // Keep focus on parent so arrow keys work (iframes steal focus)
+  window.addEventListener('blur', function () {
+    setTimeout(function () { window.focus(); }, 0);
+  });
+  window.focus();
+
+  updateCounter();
+})();
+</script>
+</body>
+</html>

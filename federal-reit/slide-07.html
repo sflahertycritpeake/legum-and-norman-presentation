@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 07 — What's Working / Not With Your Vendors?</title>
+  <link rel="stylesheet" href="cps-theme.css">
+  <style>
+    .discussion-center {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; gap: var(--sp-3);
+    }
+    .big-question {
+      font-family: 'Roboto Condensed', sans-serif; font-weight: 700;
+      font-size: var(--fs-3xl); line-height: var(--lh-snug);
+      color: var(--cp-white); max-width: 2800px;
+      text-align: center; text-transform: uppercase;
+    }
+    .big-question em { font-style: normal; color: var(--cp-red); }
+    .icon-ring {
+      width: 170px; height: 170px; border-radius: 50%;
+      border: var(--stroke-bold) solid var(--cp-red);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--cp-navy-alpha-12); flex-shrink: 0;
+    }
+    .discussion-label-row {
+      display: flex; align-items: center; gap: var(--sp-3);
+    }
+    .discussion-label-row::before, .discussion-label-row::after {
+      content: ''; flex: 1; height: var(--stroke-thin);
+      background: rgba(195,31,47,0.25);
+    }
+    .prompt-pills {
+      display: flex; flex-wrap: wrap; gap: var(--sp-1);
+      justify-content: center; max-width: 2800px;
+    }
+    .prompt-pill {
+      padding: 18px 44px; background: var(--cp-navy-alpha-12);
+      border: var(--stroke-thin) solid rgba(37,56,141,0.35);
+      border-radius: var(--radius-pill); font-family: 'Roboto', sans-serif;
+      font-size: var(--fs-xs); color: var(--cp-gray-400);
+    }
+    .eyebrow-pill {
+      display: inline-flex; align-items: center; padding: 14px 36px;
+      background: rgba(195,31,47,0.12); border: var(--stroke-thin) solid rgba(195,31,47,0.35);
+      border-radius: var(--radius-pill); font-family: 'Roboto Condensed', sans-serif;
+      font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.10em; color: var(--cp-white);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="cps-tri-navy"></div>
+    <div class="cps-tri-red"></div>
+    <div class="cps-bar-bottom"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(108deg,rgba(19,20,25,0.98) 0%,rgba(19,20,25,0.92) 55%,rgba(19,20,25,0.55) 72%,transparent 85%);z-index:1;"></div>
+
+    <div class="slide-inner">
+      <div class="flex-row" style="justify-content:space-between; margin-bottom: var(--sp-1);">
+        <div class="logo-lockup anim-fade-right">
+          <img src="../Content/Logos/Critical-Peake-Logo_FA White.png" alt="Critical Peake logo" style="height: 120px; width: auto;">
+        </div>
+        <div class="eyebrow-pill anim-fade-left" style="align-self:center;">Discussion</div>
+      </div>
+
+      <div class="discussion-center">
+        <div class="icon-ring anim-scale-in delay-1">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+            <path d="M20 25 C20 20 24 16 29 16 L91 16 C96 16 100 20 100 25 L100 72 C100 77 96 81 91 81 L65 81 L48 98 L48 81 L29 81 C24 81 20 77 20 72 Z"
+                  stroke="#C31F2F" stroke-width="6" stroke-linejoin="round" fill="none"/>
+            <circle cx="42" cy="48" r="6" fill="#C31F2F"/>
+            <circle cx="60" cy="48" r="6" fill="#C31F2F"/>
+            <circle cx="78" cy="48" r="6" fill="#C31F2F"/>
+          </svg>
+        </div>
+
+        <div class="discussion-label-row anim-fade-up delay-2" style="width: 100%; max-width:2800px;">
+          <p class="t-eyebrow" style="white-space:nowrap;">Discussion &amp; Questions</p>
+        </div>
+
+        <h2 class="big-question anim-fade-up delay-3">
+          What's <em>Working / Not</em> With Your Vendors?
+        </h2>
+
+        <div class="prompt-pills anim-fade-up delay-4">
+          <span class="prompt-pill">What do your current vendors do well?</span>
+          <span class="prompt-pill">Where are the biggest pain points?</span>
+          <span class="prompt-pill">What would make you switch?</span>
+        </div>
+
+        <p class="t-body anim-fade-up delay-5" style="color: var(--cp-gray-500); max-width:2000px;">
+          We want to understand what matters most<br>so we can earn your trust.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 11 — Blue Whale EV</title>
+  <link rel="stylesheet" href="bwev-theme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .process-flow {
+      display: flex; align-items: stretch;
+      gap: 0; flex: 1;
+    }
+    .service-card {
+      flex: 1; position: relative; overflow: hidden;
+      padding: var(--sp-4) var(--sp-2);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: var(--sp-1); text-align: center;
+    }
+    .service-icon-box {
+      width: 140px; height: 140px; border-radius: 50%;
+      background: var(--bw-blue-alpha-20); border: var(--stroke-thin) solid rgba(0,114,180,0.35);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .service-icon-box i {
+      font-size: 60px; color: #8DC63F;
+    }
+    .step-num {
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700; font-size: 36px; color: var(--bw-green);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      opacity: 0.6;
+    }
+    .service-subtitle {
+      font-family: 'Avenir Next', Avenir, sans-serif; font-size: var(--fs-sm);
+      color: var(--bw-green); text-transform: uppercase; letter-spacing: 0.10em; font-weight: 600;
+    }
+    .service-title {
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700; font-size: var(--fs-lg); color: var(--bw-white); line-height: var(--lh-snug);
+    }
+    .service-desc {
+      font-family: 'Avenir Next', Avenir, sans-serif; font-size: 40px;
+      color: var(--bw-white); line-height: 1.45; opacity: 0.7; text-align: center;
+    }
+    .flow-arrow {
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; width: 100px;
+    }
+    .flow-arrow svg {
+      width: 80px; height: 80px;
+      stroke: var(--bw-green); stroke-width: 3; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      opacity: 0.6;
+    }
+    .section-header { margin-bottom: var(--sp-2); }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="bwev-glow-right anim-glow-pulse"></div>
+    <div class="bwev-glow-bottom"></div>
+    <div class="bwev-wave-bg anim-wave-drift">
+      <svg viewBox="0 0 3840 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,500 C580,400 1260,560 1940,420 C2620,280 3260,500 3840,380 L3840,900 L0,900 Z" fill="#0072B4" opacity="0.17"/>
+        <path d="M0,620 C620,500 1360,660 2040,520 C2720,380 3360,580 3840,480 L3840,900 L0,900 Z" fill="#0072B4" opacity="0.27"/>
+        <path d="M0,750 C460,690 1000,790 1600,730 C2200,670 2840,770 3840,710 L3840,900 L0,900 Z" fill="rgba(11,42,67,0.83)"/>
+      </svg>
+    </div>
+    <div class="bwev-accent-top"></div>
+    <div class="bwev-accent-bottom"></div>
+
+    <div class="slide-inner">
+      <div class="section-header flex-row" style="justify-content:space-between;">
+        <div class="flex-col gap-3">
+          <p class="t-eyebrow anim-fade-right">EV Charging Advisory &amp; Services</p>
+          <h2 class="t-h2 anim-fade-up delay-1">BLUE WHALE EV</h2>
+          <div class="divider-green anim-scale-in delay-2"></div>
+        </div>
+        <div class="logo-lockup anim-fade-left">
+          <img src="../Content/Logos/BlueWhale_LogoCMYK_white.png" alt="Blue Whale EV logo" style="height: 120px; width: auto;">
+        </div>
+      </div>
+
+      <div class="process-flow">
+        <div class="service-card anim-fade-up delay-2">
+          <span class="step-num">Step 1</span>
+          <div class="service-icon-box">
+            <i class="fa-solid fa-clipboard-check"></i>
+          </div>
+          <p class="service-subtitle">Assessment</p>
+          <h3 class="service-title">Site Evaluation<br>&amp; Audit</h3>
+          <p class="service-desc">Full audit of existing chargers,<br>wiring, panels, and infrastructure.</p>
+        </div>
+
+        <div class="flow-arrow anim-fade-up delay-2">
+          <svg viewBox="0 0 48 48"><line x1="4" y1="24" x2="38" y2="24"/><polyline points="30,16 38,24 30,32"/></svg>
+        </div>
+
+        <div class="service-card anim-fade-up delay-3">
+          <span class="step-num">Step 2</span>
+          <div class="service-icon-box">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </div>
+          <p class="service-subtitle">Advisory</p>
+          <h3 class="service-title">Agnostic Product<br>Selection</h3>
+          <p class="service-desc">Vendor-neutral recommendations<br>tailored to your sites and budget.</p>
+        </div>
+
+        <div class="flow-arrow anim-fade-up delay-3">
+          <svg viewBox="0 0 48 48"><line x1="4" y1="24" x2="38" y2="24"/><polyline points="30,16 38,24 30,32"/></svg>
+        </div>
+
+        <div class="service-card anim-fade-up delay-4">
+          <span class="step-num">Step 3</span>
+          <div class="service-icon-box">
+            <i class="fa-solid fa-plug-circle-bolt"></i>
+          </div>
+          <p class="service-subtitle">Deployment</p>
+          <h3 class="service-title">Remove &amp;<br>Replace</h3>
+          <p class="service-desc">Decommission faulty units, upgrade<br>wiring, install new chargers.</p>
+        </div>
+
+        <div class="flow-arrow anim-fade-up delay-4">
+          <svg viewBox="0 0 48 48"><line x1="4" y1="24" x2="38" y2="24"/><polyline points="30,16 38,24 30,32"/></svg>
+        </div>
+
+        <div class="service-card anim-fade-up delay-5">
+          <span class="step-num">Step 4</span>
+          <div class="service-icon-box">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <p class="service-subtitle">Financial</p>
+          <h3 class="service-title">Rebates, Incentives<br>&amp; ROI</h3>
+          <p class="service-desc">Navigate rebates and incentives<br>plus full ROI and cash flow analysis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
