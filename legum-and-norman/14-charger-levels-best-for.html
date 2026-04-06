@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 20 — EV Charger Levels: Best For</title>
+  <link rel="stylesheet" href="bwev-theme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .levels-grid {
+      display: flex;
+      gap: var(--sp-4);
+      flex: 1;
+      align-items: stretch;
+    }
+    .level-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--bw-blue-alpha-12);
+      border: var(--stroke-thin) solid rgba(0,114,180,0.28);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .level-card.highlighted {
+      background: linear-gradient(160deg, rgba(141,198,63,0.12) 0%, rgba(0,114,180,0.15) 100%);
+      border-color: rgba(141,198,63,0.40);
+      border-top: var(--stroke-bold) solid var(--bw-green);
+    }
+    .level-card:not(.highlighted) {
+      border-top: var(--stroke-bold) solid rgba(0,114,180,0.50);
+    }
+    /* Card header */
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      padding-bottom: var(--sp-3);
+      border-bottom: var(--stroke-thin) solid rgba(255,255,255,0.08);
+      margin-bottom: var(--sp-3);
+    }
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border-radius: var(--radius-pill);
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      flex-shrink: 0;
+    }
+    .level-badge.l1 {
+      background: rgba(0,114,180,0.18);
+      border: var(--stroke-thin) solid rgba(0,114,180,0.40);
+      color: #6bbfef;
+    }
+    .level-badge.l2 {
+      background: rgba(141,198,63,0.18);
+      border: var(--stroke-thin) solid rgba(141,198,63,0.50);
+      color: var(--bw-green);
+    }
+    .level-badge.l3 {
+      background: rgba(247,148,29,0.18);
+      border: var(--stroke-thin) solid rgba(247,148,29,0.40);
+      color: var(--bw-orange);
+    }
+    .card-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .level-title {
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      color: var(--bw-white);
+      line-height: 1.1;
+    }
+    .level-voltage {
+      font-family: 'Avenir Next', Avenir, sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .level-voltage.blue   { color: #6bbfef; }
+    .level-voltage.green  { color: var(--bw-green); }
+    .level-voltage.orange { color: var(--bw-orange); }
+    /* Bullet list */
+    .use-case-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      flex: 1;
+    }
+    .use-case-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-2);
+    }
+    .use-case-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 14px;
+    }
+    .use-case-dot.green  { background: var(--bw-green); }
+    .use-case-dot.blue   { background: #6bbfef; }
+    .use-case-dot.orange { background: var(--bw-orange); }
+    .use-case-dot.red    { background: #e05060; }
+    .use-case-text {
+      font-family: 'Avenir Next', Avenir, sans-serif;
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.80);
+      line-height: 1.4;
+    }
+    /* Best-for tag */
+    .best-for-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 44px;
+      border-radius: var(--radius-pill);
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      margin-top: auto;
+      padding-top: var(--sp-3);
+      align-self: flex-start;
+    }
+    .best-for-tag.green {
+      color: var(--bw-green);
+    }
+    .best-for-tag.blue {
+      color: #6bbfef;
+    }
+    .best-for-tag.orange {
+      color: var(--bw-orange);
+    }
+    /* Recommended ribbon */
+    .recommended-ribbon {
+      position: absolute;
+      top: 48px; right: -52px;
+      background: var(--bw-green);
+      color: var(--bw-dark-blue);
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700; font-size: 32px;
+      text-transform: uppercase; letter-spacing: 0.10em;
+      padding: 16px 80px;
+      transform: rotate(35deg);
+      transform-origin: center;
+    }
+    .section-header { margin-bottom: var(--sp-4); }
+    .slide-counter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 40px;
+      background: rgba(141,198,63,0.10);
+      border: var(--stroke-thin) solid rgba(141,198,63,0.30);
+      border-radius: var(--radius-pill);
+      font-family: 'Paralucent', 'Avenir Next', Avenir, sans-serif;
+      font-weight: 700;
+      font-size: var(--fs-xs);
+      color: var(--bw-green);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="bwev-glow-right anim-glow-pulse"></div>
+    <div class="bwev-glow-bottom"></div>
+    <div class="bwev-wave-bg anim-wave-drift">
+      <svg viewBox="0 0 3840 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,500 C580,400 1260,560 1940,420 C2620,280 3260,500 3840,380 L3840,900 L0,900 Z" fill="#0072B4" opacity="0.17"/>
+        <path d="M0,620 C620,500 1360,660 2040,520 C2720,380 3360,580 3840,480 L3840,900 L0,900 Z" fill="#0072B4" opacity="0.27"/>
+        <path d="M0,750 C460,690 1000,790 1600,730 C2200,670 2840,770 3840,710 L3840,900 L0,900 Z" fill="rgba(11,42,67,0.83)"/>
+      </svg>
+    </div>
+    <div class="bwev-accent-top"></div>
+    <div class="bwev-accent-bottom"></div>
+
+    <div class="slide-inner">
+      <div class="section-header flex-row" style="justify-content:space-between; align-items:flex-start;">
+        <div class="flex-col gap-3">
+          <p class="t-eyebrow anim-fade-right">EV Charging Basics</p>
+          <h2 class="t-h2 anim-fade-up delay-1">WHICH LEVEL IS RIGHT FOR YOU?</h2>
+          <div class="divider-green anim-scale-in delay-2"></div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:var(--sp-2);">
+          <div class="logo-lockup anim-fade-left">
+            <img src="../Content/Logos/BlueWhale_LogoCMYK_white.png" alt="Blue Whale EV logo" style="height: 120px; width: auto;">
+          </div>
+          <div class="slide-counter-pill anim-fade-left delay-1">
+            <i class="fa-solid fa-circle-info" style="font-size:32px;"></i>
+            2 of 2
+          </div>
+        </div>
+      </div>
+
+      <div class="levels-grid">
+
+        <!-- L1 -->
+        <div class="level-card anim-fade-up delay-2">
+          <div class="card-header">
+            <div class="level-badge l1">
+              <i class="fa-solid fa-plug" style="font-size:32px;"></i> Level 1
+            </div>
+            <div class="card-header-text">
+              <p class="level-title">Standard Outlet</p>
+              <p class="level-voltage blue">120V AC</p>
+            </div>
+          </div>
+
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot blue"></div>
+              <span class="use-case-text">Plugs into any standard outlet, no wiring needed</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot blue"></div>
+              <span class="use-case-text">Lowest upfront cost of any option</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot blue"></div>
+              <span class="use-case-text">Works for overnight, low-mileage drivers</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot red"></div>
+              <span class="use-case-text">Too slow for shared community parking</span>
+            </div>
+          </div>
+
+          <div class="best-for-tag blue">
+            <i class="fa-solid fa-house" style="font-size:36px;"></i>
+            Best for: Private single-family homes
+          </div>
+        </div>
+
+        <!-- L2 -->
+        <div class="level-card highlighted anim-fade-up delay-3">
+          <div class="recommended-ribbon">Recommended</div>
+          <div class="card-header">
+            <div class="level-badge l2">
+              <i class="fa-solid fa-charging-station" style="font-size:32px;"></i> Level 2
+            </div>
+            <div class="card-header-text">
+              <p class="level-title">240V Charger</p>
+              <p class="level-voltage green">240V AC</p>
+            </div>
+          </div>
+
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot green"></div>
+              <span class="use-case-text">Standard for multifamily, HOA, and resort properties</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot green"></div>
+              <span class="use-case-text">Revenue-generating from day one</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot green"></div>
+              <span class="use-case-text">Satisfies Maryland Right-to-Charge requests</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot green"></div>
+              <span class="use-case-text">Requires a 240V circuit. CPS handles the full install</span>
+            </div>
+          </div>
+
+          <div class="best-for-tag green">
+            <i class="fa-solid fa-building" style="font-size:36px;"></i>
+            Best for: L&amp;N resort &amp; HOA communities
+          </div>
+        </div>
+
+        <!-- L3 -->
+        <div class="level-card anim-fade-up delay-4">
+          <div class="card-header">
+            <div class="level-badge l3">
+              <i class="fa-solid fa-bolt" style="font-size:32px;"></i> Level 3
+            </div>
+            <div class="card-header-text">
+              <p class="level-title">DC Fast Charging</p>
+              <p class="level-voltage orange">480V DC</p>
+            </div>
+          </div>
+
+          <div class="use-case-list">
+            <div class="use-case-item">
+              <div class="use-case-dot orange"></div>
+              <span class="use-case-text">Built for high-volume stops where drivers charge briefly</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot orange"></div>
+              <span class="use-case-text">Requires major electrical upgrades and utility coordination</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot red"></div>
+              <span class="use-case-text">Significantly higher equipment and installation cost</span>
+            </div>
+            <div class="use-case-item">
+              <div class="use-case-dot red"></div>
+              <span class="use-case-text">Overkill for resort parking. Most residents charge overnight</span>
+            </div>
+          </div>
+
+          <div class="best-for-tag orange">
+            <i class="fa-solid fa-road" style="font-size:36px;"></i>
+            Best for: Highway stops, fleet depots, retail
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

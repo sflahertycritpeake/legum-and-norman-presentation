@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 15 — Raffle Time!</title>
+  <link rel="stylesheet" href="cps-theme.css">
+  <style>
+    .closing-stage {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: var(--sp-5); text-align: center;
+    }
+    .thank-you-headline {
+      font-family: 'Roboto Condensed', sans-serif; font-weight: 800;
+      font-size: var(--fs-hero); line-height: var(--lh-tight);
+      letter-spacing: -0.03em; color: var(--cp-white); text-transform: uppercase;
+    }
+    .thank-you-headline em { font-style: normal; color: var(--cp-red); }
+    .prize-grid { display: flex; gap: 80px; justify-content: center; }
+    .prize-card {
+      padding: var(--sp-5) 80px; background: var(--cp-navy-alpha-25);
+      border: var(--stroke-thin) solid rgba(37,56,141,0.40);
+      border-top: var(--stroke-bold) solid var(--cp-red);
+      border-radius: var(--radius-lg); display: flex; flex-direction: column;
+      align-items: center; gap: var(--sp-3); min-width: 700px;
+    }
+    .prize-value {
+      font-family: 'Roboto Condensed', sans-serif; font-weight: 700;
+      font-size: 120px; color: var(--cp-white);
+    }
+    .prize-label {
+      font-family: 'Roboto', sans-serif; font-size: var(--fs-lg);
+      color: var(--cp-gray-500); text-transform: uppercase; letter-spacing: 0.10em;
+    }
+    .prize-qty {
+      font-family: 'Roboto Condensed', sans-serif; font-size: var(--fs-xl);
+      font-weight: 700; color: var(--cp-red);
+    }
+    .tagline {
+      font-family: 'Roboto', sans-serif; font-size: var(--fs-md);
+      color: var(--cp-gray-500); font-style: italic;
+      text-align: center; max-width: 2400px;
+    }
+    .logo-row { display: flex; align-items: center; gap: var(--sp-5); }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="cps-tri-navy"></div>
+    <div class="cps-tri-red"></div>
+    <div class="cps-bar-bottom"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(108deg,rgba(19,20,25,0.98) 0%,rgba(19,20,25,0.92) 55%,rgba(19,20,25,0.55) 72%,transparent 85%);z-index:1;"></div>
+
+    <div class="slide-inner">
+      <div class="closing-stage">
+        <div class="logo-row anim-scale-in delay-1">
+          <img src="../Content/Logos/Critical-Peake-Logo_FA White.png" alt="Critical Peake logo" style="height: 160px; width: auto;">
+          <span style="width:3px; height:120px; background:rgba(255,255,255,0.15);"></span>
+          <img src="../Content/Logos/BlueWhale_LogoCMYK_white.png" alt="Blue Whale EV logo" style="height: 160px; width: auto;">
+        </div>
+
+        <h1 class="thank-you-headline anim-fade-up delay-2">
+          <em>RAFFLE</em> TIME!
+        </h1>
+
+        <div class="divider-red anim-scale-in delay-3" style="width:200px; height:14px;"></div>
+
+        <div class="prize-grid anim-fade-up delay-4">
+          <div class="prize-card">
+            <p class="prize-qty">&times;3</p>
+            <p class="prize-value">$100</p>
+            <p class="prize-label">Amazon Gift Card</p>
+          </div>
+        </div>
+
+        <p class="tagline anim-fade-up delay-5">
+          Thank you for having us today!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

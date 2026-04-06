@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 18 — A Message from Our President</title>
+  <link rel="stylesheet" href="cps-theme.css">
+  <style>
+    .video-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .video-wrapper iframe {
+      width: 2200px;
+      height: 1238px;
+      border: none;
+      border-radius: 24px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-canvas" id="slide">
+    <div class="cps-tri-navy"></div>
+    <div class="cps-tri-red"></div>
+    <div class="cps-bar-bottom"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(108deg,rgba(19,20,25,0.98) 0%,rgba(19,20,25,0.90) 55%,rgba(19,20,25,0.50) 72%,transparent 85%);z-index:1;"></div>
+
+    <div class="slide-inner full-pad">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:var(--sp-6);">
+        <div class="flex-col gap-3">
+          <p class="t-eyebrow anim-fade-right">L&amp;N Lunch &amp; Learn</p>
+          <h2 class="t-h2 anim-fade-up delay-1">A MESSAGE FROM OUR PRESIDENT</h2>
+          <div class="divider-red anim-scale-in delay-2"></div>
+        </div>
+        <div class="logo-lockup anim-fade-left" style="align-self: flex-start;">
+          <img src="../Content/Logos/Critical-Peake-Logo_FA White.png" alt="Critical Peake logo" style="height: 120px; width: auto;">
+        </div>
+      </div>
+
+      <div class="video-wrapper anim-fade-up delay-2">
+        <iframe src="https://www.youtube.com/embed/W1RPeym6Mc8" title="A Message from Our President" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var s = document.getElementById('slide');
+    function rescale() {
+      var r = Math.min(window.innerWidth / 3840, window.innerHeight / 2160);
+      s.style.transform = 'scale(' + r + ')';
+      s.style.left = ((window.innerWidth  - 3840 * r) / 2) + 'px';
+      s.style.top  = ((window.innerHeight - 2160 * r) / 2) + 'px';
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  }());
+  </script>
+<script>
+(function(){
+  if(window.parent===window)return;
+  var fs=document.createElement("style");
+  fs.id="deck-freeze";
+  fs.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+  document.head.appendChild(fs);
+  window.addEventListener("message",function(e){
+    if(e.data==="play"){
+      var f=document.getElementById("deck-freeze");
+      if(f)f.remove();
+      document.querySelectorAll("[class*=anim-]").forEach(function(el){
+        el.style.animation="none";
+        void el.offsetHeight;
+        el.style.animation="";
+      });
+    }else if(e.data==="freeze"){
+      if(!document.getElementById("deck-freeze")){
+        var s=document.createElement("style");
+        s.id="deck-freeze";
+        s.textContent="[class*=anim-]{animation:none!important;opacity:0!important}";
+        document.head.appendChild(s);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
